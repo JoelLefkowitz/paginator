@@ -3,6 +3,6 @@ project(test_package LANGUAGES CXX)
 
 add_executable(test_package test.cpp)
 
-find_package(caches)
+find_package(paginator)
 
-target_link_libraries(test_package caches::caches)
+target_link_libraries(test_package paginator::paginator)

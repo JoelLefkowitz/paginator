@@ -1,8 +1,10 @@
 #include "paginator.tpp"
 #include <gtest/gtest.h>
 
+using namespace paginator;
+
 TEST(Paginator, Pages) {
-    paginator::Paginator<int> paginator({1, 2, 3, 4, 5}, 1);
+    Paginator<int> paginator({1, 2, 3, 4, 5}, 1);
     EXPECT_EQ(paginator.pages(), 5);
 
     paginator.size = 2;
@@ -25,7 +27,7 @@ TEST(Paginator, Pages) {
 }
 
 TEST(Paginator, Page) {
-    paginator::Paginator<int> paginator({1, 2, 3, 4, 5}, 2);
+    Paginator<int> paginator({1, 2, 3, 4, 5}, 2);
     EXPECT_EQ(paginator.page(), std::vector<int>({1, 2}));
 
     paginator.index = 1;
@@ -43,12 +45,12 @@ TEST(Paginator, Page) {
 }
 
 TEST(Paginator, Empty) {
-    EXPECT_TRUE(paginator::Paginator<int>().empty());
-    EXPECT_FALSE(paginator::Paginator<int>({1}).empty());
+    EXPECT_TRUE(Paginator<int>().empty());
+    EXPECT_FALSE(Paginator<int>({1}).empty());
 }
 
 TEST(Paginator, Bounds) {
-    paginator::Paginator<int> paginator({1, 2, 3, 4, 5}, 2);
+    Paginator<int> paginator({1, 2, 3, 4, 5}, 2);
     EXPECT_TRUE(paginator.first());
     EXPECT_FALSE(paginator.last());
 
@@ -66,7 +68,7 @@ TEST(Paginator, Bounds) {
 }
 
 TEST(Paginator, Steps) {
-    paginator::Paginator<int> paginator({1, 2, 3, 4, 5}, 2);
+    Paginator<int> paginator({1, 2, 3, 4, 5}, 2);
     paginator.previous();
     EXPECT_EQ(paginator.index, 0);
 

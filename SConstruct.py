@@ -10,9 +10,7 @@ from miniscons import (
 )
 from walkmate import tree
 
-conandeps = "build/conan/SConscript_conandeps"
-
-env = conan(source=conandeps)
+env = conan(source="build/conan/SConscript_conandeps")
 
 tests = Build(
     "tests",
@@ -32,11 +30,6 @@ includes = tests.packages["CPPPATH"]
 cspell = Script(
     "cspell",
     ["npx", "cspell", ".", "--dot", "--gitignore"],
-)
-
-cppclean = Script(
-    "cppclean",
-    ["cppclean", "."],
 )
 
 cppcheck = Script(
@@ -96,7 +89,7 @@ sphinx = Script(
 
 lint = Routine(
     "lint",
-    [cspell, cppclean, trufflehog],
+    [cspell, cppcheck, trufflehog],
 )
 
 fmt = Routine(
