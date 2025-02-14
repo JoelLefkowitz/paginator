@@ -10,7 +10,8 @@ template <typename T>
 paginator::Paginator<T>::Paginator(std::vector<T> vector, size_t size, size_t index)
     : vector(std::move(vector))
     , size(size)
-    , index(index) {}
+    , index(index) {
+}
 
 template <typename T>
 size_t paginator::Paginator<T>::pages() {
