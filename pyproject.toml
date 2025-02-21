@@ -1,7 +1,7 @@
 [project]
 name = "paginator"
 description = "Extensible paginator class."
-version = "0.0.0"
+version = "0.1.0"
 
 keywords = ["paginator", "pages", "batches"]
 
